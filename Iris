@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+// Define the structure for an Iris flower
+struct Iris {
+    double sepal_length;
+    double sepal_width;
+    double petal_length;
+    double petal_width;
+    int label; // 0: Setosa, 1: Versicolor, 2: Virginica
+};
+
+// Function to predict the label of an Iris flower using a simple decision tree
+int predict(struct Iris flower) {
+    if (flower.petal_length < 2.5) {
+        return 0; // Setosa
+    } else if (flower.petal_width < 1.8) {
+        return 1; // Versicolor
+    } else {
+        return 2; // Virginica
+    }
+}
+
+int main() {
+    // Example Iris flower data
+    struct Iris test_flower;
+    test_flower.sepal_length = 5.1;
+    test_flower.sepal_width = 3.5;
+    test_flower.petal_length = 1.4;
+    test_flower.petal_width = 0.2;
+
+    // Predict the label of the test flower
+    int predicted_label = predict(test_flower);
+
+    // Print the predicted label
+    printf("Predicted Label: %d\n", predicted_label);
+
+    return 0;
+}
